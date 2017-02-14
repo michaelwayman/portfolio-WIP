@@ -1,0 +1,8 @@
+.DS_Store
+
+node_modules
+.idea/
+Makefile
+db.sqlite3
+
+*.pyc

@@ -1,0 +1,16 @@
+#aboutPage {
+  height: 800px;
+  position: relative;
+  width: 100%; }
+  #aboutPage .content {
+    font-size: 1em;
+    height: 100%;
+    text-align: center;
+    padding-top: 64px;
+    width: 100%; }
+    #aboutPage .content h1 {
+      color: black;
+      font-size: 4em;
+      margin-bottom: 24px; }
+
+/*# sourceMappingURL=styles.css.map */

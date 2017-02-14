@@ -1,0 +1,55 @@
+// TODO: Use position: sticky; once it is more mainstream
+
+$navHeight: 80px;
+$itemLineHeight: 80px;
+$initialY: 720px;
+
+//:export { fixAt: $initialY, navHeight: $navHeight }
+
+#nav {
+  //background-color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(250, 250, 250, .2);
+  height: $navHeight;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: $initialY;
+  transition: background-color 1s;
+  width: 100%;
+  z-index: 999;
+
+  &.fixed {
+    background-color: black;
+    border: none;
+    position: fixed;
+    top: 0;
+
+    ul {
+      li {
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+
+  ul {
+    height: 100%;
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      line-height: $itemLineHeight;
+      padding-left: 32px;
+      padding-right: 32px;
+
+      a {
+        color: black;
+        font-size: 1.1em;
+        font-weight: 100;
+        text-decoration: none;
+      }
+
+    }
+  }
+}

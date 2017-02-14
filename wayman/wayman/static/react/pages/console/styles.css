@@ -1,0 +1,37 @@
+#consolePage {
+  font-family: monospace;
+  font-size: 1.2em;
+  overflow-y: scroll !important;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  width: 100%;
+  z-index: 1000; }
+  #consolePage .content {
+    color: white;
+    padding: 32px;
+    position: relative; }
+    #consolePage .content .heading {
+      margin-bottom: 32px; }
+
+#cursor {
+  background-color: white;
+  display: inline-block;
+  position: absolute;
+  height: 1em;
+  width: .8em; }
+  #cursor.blink {
+    background-color: initial; }
+
+.prompt {
+  position: relative; }
+  .prompt .input {
+    color: transparent;
+    display: inline-block; }
+    .prompt .input.top {
+      color: inherit;
+      top: 0;
+      left: 0;
+      position: absolute; }
+
+/*# sourceMappingURL=styles.css.map */
