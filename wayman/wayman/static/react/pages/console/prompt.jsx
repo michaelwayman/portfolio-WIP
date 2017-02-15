@@ -68,6 +68,8 @@ class Prompt extends React.Component {
         let historyIndex = this.state.historyIndex;
 
         const caretPos = event.target.selectionEnd;
+        console.log(caretPos);
+        console.log(event.target.selectionStart);
         switch (event.keyCode) {
             case 13:  // enter key (i.e. new command)
                 event.preventDefault();
@@ -85,7 +87,8 @@ class Prompt extends React.Component {
             case 38:  // up arrow
                 if (this.state.history.length > 0) {
                     if (historyIndex > 0) historyIndex--;
-                    this.setState({input: history[historyIndex], historyIndex: historyIndex, cursorPos: history[historyIndex].length});
+                    console.log(history[historyIndex].length);
+                    this.setState({input: history[historyIndex], historyIndex: historyIndex, cursorPos: caretPos});
                 }
                 break;
             case 39:  // right arrow
@@ -94,7 +97,7 @@ class Prompt extends React.Component {
             case 40:  // up arrow
                 historyIndex++;
                 if (historyIndex < history.length) {
-                    this.setState({input: history[historyIndex], historyIndex: historyIndex, cursorPos: history[historyIndex].length});
+                    this.setState({input: history[historyIndex], historyIndex: historyIndex, cursorPos: caretPos});
                 } else {
                     this.setState({input: '', cursorPos: 0, historyIndex: history.length});
                 }

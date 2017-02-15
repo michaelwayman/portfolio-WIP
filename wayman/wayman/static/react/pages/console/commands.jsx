@@ -7,7 +7,10 @@ const helpCommand = {
             output.push(key + ' '.repeat(15 - key.length) + commands[key].short)
         }
         output.sort();
-        return output.join('\n');
+        return {
+            output: output.join('\n'),
+            exitCode: 0
+        };
     }
 };
 
@@ -15,7 +18,17 @@ const clearCommand = {
     short: 'Clear the console',
     handle: (args, state, props) => {
         state.history = [];
-        return true;
+        return {output: '', exitCode: 1}
+    }
+};
+
+const echoCommand = {
+    short: 'Outputs original input',
+    handle: (args, state, props) => {
+        return {
+            output: args.join(' '),
+            exitCode: 0
+        }
     }
 };
 
@@ -23,12 +36,14 @@ const exitCommand = {
     short: 'Close the console',
     handle: (args, state, props) => {
         props.closeConsole();
+        return {output: '', exitCode: -1}
     }
 };
 
 const commands = {
     clear: clearCommand,
     help: helpCommand,
+    echo: echoCommand,
     exit: exitCommand
 };
 
@@ -37,9 +52,12 @@ function execCommand(command, state, props) {
     if (name in commands) {
         return commands[name].handle(command.args, state, props);
     } else if (name === '') {
-        return true;
+        return {output: false, exitCode: 0};
     } else {
-        return `'${name}' is not a command.`
+        return {
+            output: `'${name}' is not a command.`,
+            exitCode: 0
+        }
     }
 }
 

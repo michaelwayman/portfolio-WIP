@@ -10,7 +10,7 @@ class HistoryItem extends React.Component {
         return (
             <div>
                 <pre>{'> ' + this.props.input}</pre>
-                <pre>{this.props.output}</pre>
+                {this.props.output ? <pre>{this.props.output}</pre>: ''}
             </div>
         )
     }
@@ -47,15 +47,15 @@ class ConsolePage extends React.Component {
     handleCommand(event) {
         const command = commandFromString(event.target.value);
         const commandOutput = execCommand(command, this.state, this.props);
-        if (commandOutput) {
-            if (commandOutput !== true) {
-                this.state.history.push({input: command.commandString, output: commandOutput});
-            }
-            this.setState({});
-            this.scrollToBottom();
-            return commandOutput;
+        const exitCode = commandOutput.exitCode;
+        if (exitCode === -1) {
+           return false;
+        } else if (exitCode === 0) {
+            this.state.history.push({input: command.commandString, output: commandOutput.output});
         }
-        return false;
+        this.setState({});
+        this.scrollToBottom();
+        return commandOutput;
     }
 
     scrollToBottom() {
