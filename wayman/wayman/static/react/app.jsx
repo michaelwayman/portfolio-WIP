@@ -14,6 +14,17 @@ require('./styles/styles.scss');
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.handleLinkClick = this.handleLinkClick.bind(this);
+        this.handleCloseConsole = this.handleCloseConsole.bind(this);
+
+        this.state = {
+            renderConsole: true
+        }
+    }
+
     getNavigation() {
         return [
             {name: 'about', url: '#aboutPage'},
@@ -22,12 +33,27 @@ class App extends React.Component {
         ];
     }
 
+    handleLinkClick(event) {
+        let url = event.currentTarget.getAttribute('href');
+
+        switch(url) {
+            case '#console':
+                event.preventDefault();
+                this.setState({renderConsole: !this.state.renderConsole});
+                break;
+        }
+    }
+
+    handleCloseConsole() {
+        this.setState({renderConsole: false});
+    }
+
     render() {
         return (
             <div id="app">
                 <Nav navLinks={this.getNavigation()} fixAt={720} />
-                <SideBar/>
-                <ConsolePage/>
+                <SideBar handleLinkClick={this.handleLinkClick}/>
+                {this.state.renderConsole ? <ConsolePage closeConsole={this.handleCloseConsole}/>: ''}
                 <AboutPage/>
                 <SkillsPage/>
                 <ProjectsPage/>
