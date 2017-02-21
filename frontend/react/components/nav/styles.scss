@@ -1,0 +1,65 @@
+// TODO: Use position: sticky; once it is more mainstream
+
+.nav {
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      text-align: center;
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    z-index: 50;
+  }
+
+  &.abs {
+    position: absolute;
+    z-index: 50;
+  }
+
+  &.vertical {
+    li {
+      display: block;
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      text-align: left;
+    }
+  }
+
+  &.horizontal {
+    li {
+      display: inline-block;
+      padding-left: 16px;
+      padding-right: 16px;
+      a {
+        transition: all .5s;
+      }
+
+      &:hover {
+        a {color: darkgray;}
+      }
+    }
+  }
+
+}
+
+//.socialMedia-appear {
+//  transition: all .5s;
+//  transition-delay: 2s;
+//  transform: translate3d(-200px, 0, 0);
+//  opacity: 0;
+//}
+//
+//.socialMedia-appear.socialMedia-appear-active {
+//  opacity: 1;
+//  transform: translate3d(0, 0, 0);
+//}
