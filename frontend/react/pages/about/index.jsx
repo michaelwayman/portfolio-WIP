@@ -34,10 +34,11 @@ class AboutPage extends React.Component {
                                              transitionAppear={true}
                                              transitionAppearTimeout={2500}>
                         <p className="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
+                            <strong>Michael Wayman</strong> here. <br/><br/><br/>
+                            This is my first time trying out ReactJS. Since then I have mastered it and even contributed
+                            to Facebook's efforts in maintaining the ecosystem. Now that I am
+                            <em> looking for work </em> again I think I will take this project back up and build it correctly 
+                            in to a full blown portfolio/resume website.
                         </p>
                     </ReactCSSTransitionGroup>
                 </div>

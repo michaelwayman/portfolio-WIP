@@ -6,3 +6,5 @@ Makefile
 db.sqlite3
 
 *.pyc
+app.bundle.
+app.bundle.*
